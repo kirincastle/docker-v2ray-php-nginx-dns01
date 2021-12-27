@@ -1,0 +1,16 @@
+draft: false
+acme:
+  email_account: ${email_arg}
+  staging: ${staging_arg}
+profiles:
+- name: my_profile
+  provider: cloudflare
+  provider_options:
+    auth_token: ${auth_token}
+certificates:
+- domains:
+  - ${domain_args}
+  profile: my_profile
+  autorestart:
+  - containers:
+    - nginx
