@@ -1,6 +1,20 @@
 version: '3'
 
 services:
+  dnsrobocert:
+    image: adferrand/dnsrobocert
+    container_name: dnsrobocert
+    volumes:
+    - ./data/letsencrypt:/etc/letsencrypt
+    - ./data/dnsrobocert:/etc/dnsrobocert
+    - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      email_arg: abc@df.com
+      staging_arg: "false"
+      domain_args: acb.abc.com
+      auth_token: ffY_SafasfZ-bfasdf7o-Aadfafasfpueewrqwerq7M9L42o
+    restart: always
+
   nginx:
     image: nginx:1.15-alpine
     container_name: nginx
@@ -9,8 +23,7 @@ services:
       - ./data/nginx/conf.d:/etc/nginx/conf.d
       - ./data/nginx/html:/usr/share/nginx/html
       - ./logs/nginx:/var/log/nginx
-      - ./data/certbot/conf:/etc/letsencrypt
-      - ./data/certbot/www:/var/www/certbot
+      - ./data/letsencrypt:/etc/letsencrypt
     ports:
       - "80:80"
       - "443:443"
@@ -27,15 +40,7 @@ services:
       - ./data/nginx/html:/usr/share/nginx/html
     expose:
       - "9000" #开放端口给容器，不对外开放
-  
-  certbot:
-    image: certbot/certbot
-    restart: unless-stopped
-    volumes:
-      - ./data/certbot/conf:/etc/letsencrypt
-      - ./data/certbot/www:/var/www/certbot
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
-  
+
   v2ray:
     image: teddysun/v2ray:latest
     container_name: v2ray
