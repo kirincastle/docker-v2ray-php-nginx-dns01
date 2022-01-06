@@ -7,7 +7,7 @@ services:
     volumes:
     - ./data/letsencrypt:/etc/letsencrypt
     - ./data/dnsrobocert:/etc/dnsrobocert
-    - /var/run/docker.sock:/var/run/docker.sock
+    - ./var/run/docker.sock:/var/run/docker.sock
     environment:
       email_arg: abc@df.com
       staging_arg: "false"
@@ -42,7 +42,7 @@ services:
       - "9000" #开放端口给容器，不对外开放
 
   v2ray:
-    image: teddysun/v2ray:latest
+    image: v2ray/official:latest
     container_name: v2ray
     environment:
       - TZ=Asia/Shanghai
