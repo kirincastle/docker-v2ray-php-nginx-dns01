@@ -7,7 +7,7 @@ services:
     volumes:
     - ./data/letsencrypt:/etc/letsencrypt
     - ./data/dnsrobocert:/etc/dnsrobocert
-    - ./var/run/docker.sock:/var/run/docker.sock
+    - /var/run/docker.sock:/var/run/docker.sock
     environment:
       email_arg: abc@df.com
       staging_arg: "false"
