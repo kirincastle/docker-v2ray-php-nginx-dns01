@@ -16,7 +16,7 @@ services:
     restart: always
 
   nginx:
-    image: nginx:1.15-alpine
+    image: nginx:alpine
     container_name: nginx
     restart: unless-stopped
     volumes:
@@ -33,7 +33,7 @@ services:
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
 
   php:
-    image: php:7.2-fpm
+    image: php:fpm
     container_name: docker-php-fpm
     restart: unless-stopped
     volumes:
