@@ -83,10 +83,10 @@ $ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 4. 安装git并clone代码
 
 ```
-apt -y install git
+apt install git curl jq moreutils net-tools -y
 
 
-git clone https://github.com/kirincastle/docker-v2ray-php-nginx.git
+git clone https://github.com/kirincastle/docker-v2ray-php-nginx-dns01.git
 ```
 
 或者你可以下载后在上传到你的VPS。
