@@ -11,6 +11,7 @@ sed "s+tls:tls -a .* -m ps:.*+tls:tls -a $yourdomain -m ps:$yourdomain --debug .
 
 read -p "your email for certificate registration is: " email
 sed 's+email_arg:.*+email_arg: '$email'+g' ./docker-compose.yml | sponge ./docker-compose.yml
+sed 's+email=".*"+email="'"$email"'"+g' ./init-letsencrypt.sh | sponge ./init-letsencrypt.sh
 
 read -p "Authen token for cloudflare: " authtoken
 sed 's+auth_token:.*+auth_token: '$authtoken'+g' ./docker-compose.yml | sponge ./docker-compose.yml
