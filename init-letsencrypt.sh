@@ -49,5 +49,5 @@ fi
 echo "### Reloading nginx ..."
 docker-compose exec nginx nginx -s reload
 
-echo #Generating v2ray link
+echo "#Generating v2ray link"
 ./data/v2ray/json2vmess.py -m port:443 -m tls:tls -a yourdomain -m ps:yourdomain --debug ./data/v2ray/config.json
