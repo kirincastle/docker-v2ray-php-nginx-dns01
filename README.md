@@ -83,7 +83,7 @@ $ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 4. 安装git并clone代码
 
 ```
-apt install git curl jq moreutils net-tools -y
+apt update && apt upgrade -y && apt install git curl jq moreutils net-tools docker docker.io -y
 
 
 git clone https://github.com/kirincastle/docker-v2ray-php-nginx-dns01.git
