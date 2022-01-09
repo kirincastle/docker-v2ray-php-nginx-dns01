@@ -9,6 +9,7 @@ sed "s/server_name .*;/server_name $yourdomain;/g" ./data/nginx/conf.d/v2ray.con
 sed "s+https://.*$request_uri;+https://$yourdomain\$request_uri;+g" ./data/nginx/conf.d/v2ray.conf | sponge ./data/nginx/conf.d/v2ray.conf
 sed "s+/etc/letsencrypt/live/.*/+/etc/letsencrypt/live/$yourdomain/+g" ./data/nginx/conf.d/v2ray.conf | sponge ./data/nginx/conf.d/v2ray.conf
 sed "s+tls:tls -a .* -m ps:.*+tls:tls -a $yourdomain -m ps:$yourdomain --debug ./data/v2ray/config.json+g" ./init-letsencrypt.sh | sponge ./init-letsencrypt.sh
+sed "s/domains=(.*)/domains=($yourdomain)/g" ./init-letsencrypt.sh | sponge ./init-letsencrypt.sh
 
 read -p "your email for certificate registration is: " email
 sed 's+email_arg:.*+email_arg: '$email'+g' ./docker-compose.yml | sponge ./docker-compose.yml
