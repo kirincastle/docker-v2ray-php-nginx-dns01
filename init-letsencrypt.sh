@@ -18,15 +18,6 @@ if [ -d "$data_path" ]; then
   fi
 fi
 
-
-if [ ! -e "$data_path/options-ssl-nginx.conf" ] || [ ! -e "$data_path/ssl-dhparams.pem" ]; then
-  echo "### Downloading recommended TLS parameters ..."
-  mkdir -p "$data_path/conf"
-  curl -s https://raw.githubusercontent.com/certbot/certbot/master/certbot-nginx/certbot_nginx/_internal/tls_configs/options-ssl-nginx.conf > "$data_path/options-ssl-nginx.conf"
-  curl -s https://raw.githubusercontent.com/certbot/certbot/master/certbot/certbot/ssl-dhparams.pem > "$data_path/ssl-dhparams.pem"
-  echo
-fi
-
 echo "### Deleting dummy certificate for $domains ..."
 docker-compose run --rm --entrypoint "\
   rm -Rf /etc/letsencrypt/live/$domains && \
@@ -45,9 +36,6 @@ if [ -e "$data_path/live/$domains/fullchain.pem" ]; then
   docker-compose exec nginx nginx -s reload
   echo
 fi
-
-echo "### Reloading nginx ..."
-docker-compose exec nginx nginx -s reload
 
 echo "#Generating v2ray link"
 ./data/v2ray/json2vmess.py -m port:443 -m tls:tls -a yourdomain -m ps:yourdomain --debug ./data/v2ray/config.json
