@@ -51,7 +51,7 @@ services:
       - TZ=Asia/Shanghai
     restart: always
     volumes:
-      - ./data/xray:/etc/xray
-      - ./logs/xray:/var/log/xray
+      - ./data/xray:/etc/x2ray
+      - ./logs/xray:/var/log/x2ray
     expose:
       - "35625"
