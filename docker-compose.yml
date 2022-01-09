@@ -38,7 +38,6 @@ services:
     environment:
       - TZ=Asia/Shanghai
     restart: always
-    command: v2ray -config=/etc/v2ray/config.json
     volumes:
       - ./data/v2ray:/etc/v2ray
       - ./logs/v2ray:/var/log/v2ray
