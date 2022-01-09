@@ -30,6 +30,7 @@ services:
     links:
       - v2ray:v2ray #连接v2ray容器，映射主机名，此处非常重要，如果没有这个映射nginx就无法连接v2ray的websocket服务
       - php:docker-php-fpm
+      - xray:xray
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
 
   php:
@@ -42,7 +43,7 @@ services:
       - "9000" #开放端口给容器，不对外开放
 
   v2ray:
-    image: v2ray/official:latest
+    image: v2rayquanx #use dockerfile local built image
     container_name: v2ray
     environment:
       - TZ=Asia/Shanghai
@@ -53,3 +54,15 @@ services:
       - ./logs/v2ray:/var/log/v2ray
     expose:
       - "23356" #开放端口给容器，不对外开放
+      
+  xray:
+    image: teddysun/xray:latest
+    container_name: xray
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+    volumes:
+      - ./data/xray:/etc/xray
+      - ./logs/xray:/var/log/xray
+    expose:
+      - "35625"
