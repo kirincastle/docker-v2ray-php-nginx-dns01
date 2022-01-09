@@ -1,0 +1,69 @@
+{
+	"routing": {
+		"rules": [
+			{
+				"type": "field",
+				"ip": [
+					"geoip:private"
+				],
+				"outboundTag": "block"
+			},
+			{
+				"type": "field",
+				"outboundTag": "blocked",
+				"protocol": [
+					"bittorrent"
+				]
+			}
+		]
+	},
+	"log": {
+		"loglevel": "warning",
+		"error": "/var/log/xray/error.log",
+		"access": "/var/log/xray/access.log"
+	},
+	"inbounds": [
+		{
+			"port": 35625,
+			"listen": "0.0.0.0",
+			"protocol": "vless",
+			"settings": {
+				"clients": [
+					{
+						"id": "fdfddf9-b471-490b-9d8b-3ffdfa511bc",
+						"level": 0
+					}
+				],
+				"decryption": "none"
+			},
+			"sniffing": {
+				"destOverride": [
+					"http",
+					"tls"
+				],
+				"enabled": true
+			},
+			"streamSettings": {
+				"network": "ws",
+				"security": "none",
+				"wsSettings": {
+					"path": "/88dfafdaadfafffc",
+					"headers": {
+						"Host": "abc.adb.com"
+					}
+				}
+			}
+		}
+	],
+	"outbounds": [
+		{
+			"protocol": "freedom",
+			"settings": {}
+		},
+		{
+			"protocol": "blackhole",
+			"settings": {},
+			"tag": "blocked"
+		}
+	]
+}
