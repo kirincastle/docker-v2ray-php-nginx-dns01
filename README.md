@@ -12,6 +12,7 @@ https://github.com/Jrohy/multi-v2ray
 
 ## 更新日志
 
+* 2022年1月9日：增加了xray相关配置，增加v2ray dockerfile,规避QuanX无法识别的问题（aead）
 * 2020年4月22日：增加了input.sh,用来快速更改需要的参数
 * 2020年4月17日: 增加了bitwarden，speedtest测速时候的上传问题还是没有解决。
 * 2020年4月9日：增加php7.2-fpm, 使用speedtest，使用 Jrohy/multi-v2ray
