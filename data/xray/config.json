@@ -18,7 +18,7 @@
 		]
 	},
 	"log": {
-		"loglevel": "warning",
+		"loglevel": "warning"
 	},
 	"inbounds": [
 		{
