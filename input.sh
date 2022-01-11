@@ -5,7 +5,7 @@ read -p "your domain is: " yourdomain
 sed 's+domain_args:.*+domain_args: '$yourdomain'+g' ./docker-compose.yml | sponge ./docker-compose.yml
 sed 's+"Host": ".*"+"Host": "'"$yourdomain"'"+g' ./data/v2ray/config.json | sponge ./data/v2ray/config.json
 sed 's+"Host": ".*"+"Host": "'"$yourdomain"'"+g' ./data/xray/config.json | sponge ./data/xray/config.json
-sed  "s+"$(awk '/server_name/{i++;if (i==1){print $2}}' ./data/nginx/conf.d/v2ray.conf)"+$yourdomain;+" ./data/nginx/conf.d/v2ray.conf | sponge ./data/nginx/conf.d/v2ray.conf
+sed  "s+"$(awk '/server_name/{i++;if (i==1){print $2}}' ./data/nginx/conf.d/v2ray.conf)"+$yourdomain\;+" ./data/nginx/conf.d/v2ray.conf | sponge ./data/nginx/conf.d/v2ray.conf
 sed "s+https://.*:443\$request_uri;+https://$yourdomain:443\$request_uri;+g" ./data/nginx/conf.d/v2ray.conf | sponge ./data/nginx/conf.d/v2ray.conf
 sed -r 's/sub_filter '"(.*?)"' '"(.*?)"';/sub_filter \1 "'$yourdomain'";/g' ./data/nginx/conf.d/v2ray.conf | sponge ./data/nginx/conf.d/v2ray.conf
 sed "s+/etc/letsencrypt/live/.*/+/etc/letsencrypt/live/$yourdomain/+g" ./data/nginx/conf.d/v2ray.conf | sponge ./data/nginx/conf.d/v2ray.conf
