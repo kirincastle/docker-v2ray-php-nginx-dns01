@@ -83,6 +83,7 @@ $ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 4. 安装git并clone代码
 
+wget --no-check-certificate -O bbr.sh https://github.com/teddysun/across/raw/master/bbr.sh && chmod 755 bbr.sh && ./bbr.sh
 ```
 apt update && apt upgrade -y && apt install git curl jq moreutils net-tools docker docker.io -y
 
