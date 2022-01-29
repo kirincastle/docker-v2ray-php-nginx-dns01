@@ -33,7 +33,7 @@ services:
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
 
   v2ray:
-    image: v2rayquanx #use dockerfile local built image
+    image: v2fly/v2flay-core #use dockerfile local built image
     container_name: v2ray
     environment:
       - TZ=Asia/Shanghai
