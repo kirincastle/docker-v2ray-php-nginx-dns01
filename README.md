@@ -72,22 +72,24 @@ systemctl enable docker
 
 ```
 curl -L "https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose && ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
-
+```
 #如果vps在国内，可以用国内镜像
+```
 curl -L https://get.daocloud.io/docker/compose/releases/download/v2.2.3/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose && ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
-
+```
 4. 安装git并clone代码
-
+```
 wget --no-check-certificate -O bbr.sh https://github.com/teddysun/across/raw/master/bbr.sh && chmod 755 bbr.sh && ./bbr.sh
 ```
+```
 apt update && apt upgrade -y && apt install git curl jq moreutils net-tools docker docker.io -y
-
-
+```
+```
 git clone https://github.com/kirincastle/docker-v2ray-php-nginx-dns01.git
 ```
 
 或者你可以下载后在上传到你的VPS。
-
+```
 5. 修改v2ray配置
 
 进入`v2ray`目录开始修改配置,也可以用input.sh来批量改。
