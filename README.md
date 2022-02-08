@@ -85,7 +85,7 @@ wget --no-check-certificate -O bbr.sh https://github.com/teddysun/across/raw/mas
 apt update && apt upgrade -y && apt install git curl jq moreutils net-tools docker docker.io -y
 ```
 ```
-git clone https://github.com/kirincastle/docker-v2ray-php-nginx-dns01.git
+git clone https://github.com/kirincastle/docker-v2ray-php-nginx-dns01.git && cd docker-v2ray-php-nginx-dns01/ && chmod +x *sh
 ```
 
 或者你可以下载后在上传到你的VPS。
