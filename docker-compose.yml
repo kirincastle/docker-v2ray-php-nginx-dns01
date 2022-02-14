@@ -55,3 +55,15 @@ services:
       - ./logs/xray:/var/log/xray
     expose:
       - "35625"
+
+  nginxproxymgt:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    container_name: npm
+    ports:
+      - '5680:80'
+      - '81:81'
+      - '39443:443'
+    volumes:
+      - ./data/nginx-proxy-manager/data:/data
+      - ./data/nginx-proxy-manager/data/letsencrypt:/etc/letsencrypt
