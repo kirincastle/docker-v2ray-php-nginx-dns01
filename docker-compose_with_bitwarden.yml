@@ -2,7 +2,7 @@ version: '3'
 
 services:
   bitwarden:
-   image: bitwardenrs/server
+   image: vaultwarden/server:latest
    container_name: bitwarden
    restart: always
    volumes:
@@ -11,7 +11,7 @@ services:
     WEBSOCKET_ENABLED: "true"
     SIGNUPS_ALLOWED: "true"
     DOMAIN: "https://yourdomain/subpath"
-    ADMIN_TOKEN: "fdwer1556445623gwe56456"
+    ADMIN_TOKEN: "fdwer155656456"
    ports:
      - "8080:80"
       
