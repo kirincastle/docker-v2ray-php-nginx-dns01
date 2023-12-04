@@ -31,9 +31,7 @@
     ]
   },
   "log": {
-    "loglevel": "warning",
-    "error": "/var/log/xray/error.log",
-    "access": "/var/log/xray/access.log"
+    "loglevel": "warning"
   },
   "outbounds": [
     {
